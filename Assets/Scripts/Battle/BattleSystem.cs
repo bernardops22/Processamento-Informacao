@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using System.Collections;
 
 public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy }
 
@@ -19,15 +18,20 @@ public class BattleSystem : MonoBehaviour
     private int currentAction;
     private int currentMove;
 
-    public void StartBattle()
+    private PikemonParty playerParty;
+    private Pikemon wildPikemon;
+
+    public void StartBattle(PikemonParty playerParty, Pikemon wildPikemon)
     {
+        this.playerParty = playerParty;
+        this.wildPikemon = wildPikemon;
         StartCoroutine(SetupBattle());
     }
 
     public IEnumerator SetupBattle()
     {
-        playerUnit.Setup();
-        enemyUnit.Setup();
+        playerUnit.Setup(playerParty.GetHealthyPikemon());
+        enemyUnit.Setup(wildPikemon);
         playerHud.SetData(playerUnit.Pikemon);
         enemyHud.SetData(enemyUnit.Pikemon);
 
@@ -104,7 +108,24 @@ public class BattleSystem : MonoBehaviour
             playerUnit.PlayFaintAnimation();
             
             yield return new WaitForSeconds(2f);
-            OnBattleOver(false);
+
+            var nextPikemon = playerParty.GetHealthyPikemon();
+            if (nextPikemon != null)
+            {
+                playerUnit.Setup(nextPikemon);
+                playerHud.SetData(nextPikemon);
+
+                dialogBox.SetMoveNames(nextPikemon.Moves);
+
+                yield return dialogBox.TypeDialog($"Go {nextPikemon.Base.Name}!");
+                yield return new WaitForSeconds(1f);
+
+                PlayerAction();
+            }
+            else
+            {
+                OnBattleOver(false);
+            }
         }
         else
         {

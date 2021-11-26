@@ -6,8 +6,7 @@ using DG.Tweening;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] 
-    PikemonBase _base;
+    
     
     [SerializeField] 
     bool isPlayerUnit;
@@ -25,8 +24,9 @@ public class BattleUnit : MonoBehaviour
         originalColor = image.color;
     }
 
-    public void Setup(){
-        Pikemon = new Pikemon(_base);
+    public void Setup(Pikemon pikemon)
+    {
+        Pikemon = pikemon;
         if (isPlayerUnit)
             image.sprite = Pikemon.Base.BackSprite;
         else

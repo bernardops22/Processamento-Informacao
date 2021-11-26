@@ -2,14 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pikemon{
-    public PikemonBase Base {get; set;}
+[System.Serializable]
+public class Pikemon
+{
+
+    [SerializeField] PikemonBase _base;
+
+    public PikemonBase Base
+    {
+        get
+        {
+            return _base;
+        }
+    }
+    
     public int HP {set; get;}
     
     public List<Move> Moves { get; set; }
 
-    public Pikemon(PikemonBase pBase){
-        Base = pBase;
+    public void Init(){
+        
+        //Base = pBase;
         HP = Base.MaxHp;
         
         //Generate Moves
