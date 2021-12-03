@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MapArea : MonoBehaviour
 {
-    [SerializeField] List<Pikemon> wildPikemons;
+    [FormerlySerializedAs("wildPikamons")] [SerializeField] List<Pikamon> wildPikamons;
     
     
-    //TODO Spawn based on pikemon rarity
-    public Pikemon GetRandomWildPikemon()
+    //TODO Spawn based on pikamon rarity
+    public Pikamon GetRandomWildPikamon()
     {
-        var wildPikemon = wildPikemons[Random.Range(0,wildPikemons.Count)];
-        wildPikemon.Init();
-        return wildPikemon;
+        var wildPikamon = wildPikamons[Random.Range(0,wildPikamons.Count)];
+        wildPikamon.Init();
+        return wildPikamon;
     }
 }

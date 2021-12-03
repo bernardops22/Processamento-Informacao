@@ -11,7 +11,7 @@ public class BattleUnit : MonoBehaviour
     [SerializeField] 
     bool isPlayerUnit;
 
-    public Pikemon Pikemon {get; set;}
+    public Pikamon Pikamon {get; set;}
 
     private Image image;
     private Vector3 originalPos;
@@ -24,13 +24,13 @@ public class BattleUnit : MonoBehaviour
         originalColor = image.color;
     }
 
-    public void Setup(Pikemon pikemon)
+    public void Setup(Pikamon pikamon)
     {
-        Pikemon = pikemon;
+        Pikamon = pikamon;
         if (isPlayerUnit)
-            image.sprite = Pikemon.Base.BackSprite;
+            image.sprite = Pikamon.Base.BackSprite;
         else
-            image.sprite = Pikemon.Base.FrontSprite;
+            image.sprite = Pikamon.Base.FrontSprite;
         
         image.color = originalColor;
         PlayerEnterAnimation();

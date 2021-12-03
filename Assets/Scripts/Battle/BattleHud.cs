@@ -10,17 +10,17 @@ public class BattleHud : MonoBehaviour
     [SerializeField] 
     HPBar hpBar;
 
-    private Pikemon _pikemon;
+    private Pikamon pikamon;
 
-    public void SetData(Pikemon pikemon)
+    public void SetData(Pikamon pikamon)
     {
-        _pikemon = pikemon;
-        nameText.text = pikemon.Base.Name;
-        hpBar.SetHP((float)pikemon.HP/pikemon.Base.MaxHp);
+        this.pikamon = pikamon;
+        nameText.text = pikamon.Base.Name;
+        hpBar.SetHP((float)pikamon.HP/pikamon.Base.MaxHp);
     }
 
     public IEnumerator UpdateHP()
     {
-        yield return hpBar.SetHPSmooth((float)_pikemon.HP/_pikemon.Base.MaxHp);
+        yield return hpBar.SetHPSmooth((float)pikamon.HP/pikamon.Base.MaxHp);
     }
 }

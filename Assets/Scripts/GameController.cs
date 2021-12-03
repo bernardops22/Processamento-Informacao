@@ -24,10 +24,10 @@ public class GameController : MonoBehaviour
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
 
-        var playerParty = playerController.GetComponent<PikemonParty>();
-        var wildPikemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPikemon();
+        var playerParty = playerController.GetComponent<PikamonParty>();
+        var wildPikamon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPikamon();
         
-        battleSystem.StartBattle(playerParty, wildPikemon);
+        battleSystem.StartBattle(playerParty, wildPikamon);
     }
 
     void EndBattle(bool won)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour{
 
@@ -9,6 +10,8 @@ public class PlayerController : MonoBehaviour{
     public LayerMask solidObjectsLayer;
     public LayerMask grassLayer;
 
+    private bool isSprinting;
+    [SerializeField] float sprintingSpeedMultiplier;
     public event Action OnEncountered;
 
     private bool isMoving;
@@ -34,7 +37,8 @@ public class PlayerController : MonoBehaviour{
                 var targetPos = transform.position;
                 targetPos.x += input.x;
                 targetPos.y += input.y;
-
+                if (Input.GetKey(KeyCode.LeftShift))
+                    isSprinting = true;
                 if(IsWalkable(targetPos))
                     StartCoroutine(Move(targetPos));
             }
@@ -47,13 +51,17 @@ public class PlayerController : MonoBehaviour{
         isMoving = true;
 
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon){
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            if (!isSprinting)
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            else
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * sprintingSpeedMultiplier * Time.deltaTime);
             yield return null;
         }
         transform.position = targetPos;
 
         isMoving = false;
-
+        isSprinting = false;
+        
         CheckForEncounters();
     }
 
