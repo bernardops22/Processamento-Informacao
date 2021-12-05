@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour{
 
     public float moveSpeed;
-    public LayerMask solidObjectsLayer;
-    public LayerMask grassLayer;
 
     private bool isSprinting;
     [SerializeField] float sprintingSpeedMultiplier;
     public event Action OnEncountered;
+    public event Action<Collider2D> OnEnterTrainersView;
 
     private bool isMoving;
     private Vector2 input;
@@ -44,7 +44,24 @@ public class PlayerController : MonoBehaviour{
             }
         }   
         animator.SetBool("isMoving", isMoving);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Interact();
+        }
     }
+   
+   void Interact()
+   {
+       var facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+       var interactPos = transform.position + facingDir;
+
+       var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer);
+       if (collider != null)
+       {
+           collider.GetComponent<Interactable>()?.Interact();
+       }
+   }
 
     IEnumerator Move(Vector3 targetPos){
 
@@ -62,25 +79,41 @@ public class PlayerController : MonoBehaviour{
         isMoving = false;
         isSprinting = false;
         
-        CheckForEncounters();
+        OnMoveOver();
     }
 
-    private bool IsWalkable(Vector3 targetPos){
-        if(Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null){
+    private bool IsWalkable(Vector3 targetPos)
+    {
+        if(Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.i.SolidLayer | GameLayers.i.InteractableLayer) != null){
             return false;
         }
         return true;
     }
+
+    private void OnMoveOver()
+    {
+        CheckForEncounters();
+        CheckIfInTrainersView();
+    }
     
     //Probabilidade de aparecer um pikamon (difere se estiver a correr ou a andar)
     private void CheckForEncounters(){
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.GrassLayer) != null && GetComponent<PikamonParty>().GetHealthyPikamon() != null)
         {
             if(UnityEngine.Random.Range(1,101) <= 10)
             {
                 animator.SetBool("isMoving",false);
                 OnEncountered();
             }
+        }
+    }
+
+    private void CheckIfInTrainersView()
+    {
+        var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.FovLayer);
+        if (collider != null)
+        {
+            OnEnterTrainersView?.Invoke(collider);
         }
     }
 }
