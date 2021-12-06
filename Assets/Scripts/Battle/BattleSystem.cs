@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = System.Random;
 
 public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, Busy, PartyScreen }
 
@@ -13,6 +15,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] private PartyScreen partyScreen;
+    [SerializeField] private GameObject pikaballSprite;
 
     public event Action<bool> OnBattleOver;
 
@@ -24,10 +27,15 @@ public class BattleSystem : MonoBehaviour
     private PikamonParty playerParty;
     private Pikamon wildPikamon;
 
+    private PlayerController player;
+
     public void StartBattle(PikamonParty playerParty, Pikamon wildPikamon)
     {
         this.playerParty = playerParty;
         this.wildPikamon = wildPikamon;
+
+        player = playerParty.GetComponent<PlayerController>();
+        
         StartCoroutine(SetupBattle());
     }
 
@@ -178,6 +186,7 @@ public class BattleSystem : MonoBehaviour
             }else if (currentAction == 1)
             {
                 //Bag
+                StartCoroutine(ThrowPikaball());
             }else if (currentAction == 2)
             {
                 //Pikamon
@@ -185,6 +194,7 @@ public class BattleSystem : MonoBehaviour
             }else if (currentAction == 3)
             {
                 //Run
+                OnBattleOver(true);
             }
             
         }
@@ -274,5 +284,64 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         StartCoroutine(EnemyMove());
+    }
+
+    IEnumerator ThrowPikaball()
+    {
+        dialogBox.EnableActionSelector(false);
+        state = BattleState.Busy;
+        
+        yield return dialogBox.TypeDialog($"{player.name} used PIKABALL!");
+        
+        var pikaballObj = Instantiate(pikaballSprite, playerUnit.transform.position - new Vector3(2,0), Quaternion.identity);
+        var pikaball = pikaballObj.GetComponent<SpriteRenderer>();
+        
+        //Animations
+        yield return pikaball.transform.DOJump(enemyUnit.transform.position + new Vector3(0,2), 2f, 1, 1f).WaitForCompletion();
+        yield return enemyUnit.PlayCaptureAnimation();
+        yield return pikaball.transform.DOMoveY(enemyUnit.transform.position.y - 0.9f, 0.5f).WaitForCompletion();
+
+        int shakeCount = TryToCatchPikamon(enemyUnit.Pikamon);
+        
+        for (int i = 0; i < Mathf.Min(shakeCount,3); ++i)
+        {
+            yield return new WaitForSeconds(0.5f);
+            yield return pikaball.transform.DOPunchRotation(new Vector3(0, 0, 10f), 0.8f).WaitForCompletion();
+        }
+
+        if (shakeCount == 4)
+        {
+            //Pikamon is caught
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pikamon.Base.Name} was caught");
+            yield return pikaball.DOFade(0,1.5f).WaitForCompletion();
+            
+            playerParty.AddPikamon(enemyUnit.Pikamon);
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pikamon.Base.Name} has been added to your party");
+            yield return new WaitForSeconds(1f);
+            
+            Destroy(pikaball);
+            OnBattleOver(true);
+        }
+        else
+        {
+            //Pikamon broke out
+            yield return new WaitForSeconds(1f);
+            yield return pikaball.DOFade(0,0.2f);
+            yield return enemyUnit.PlayBreakOutAnimation();
+            
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pikamon.Base.Name} broke free");
+            Destroy(pikaball);
+            StartCoroutine(EnemyMove());
+        }
+    }
+
+    //Probabilidade de apanhar um pikamon
+    int TryToCatchPikamon(Pikamon pikamon)
+    {
+        double curHpPercentage = (double) pikamon.HP / pikamon.Base.MaxHp;
+        double catchRate = Generators.CatchRate() * curHpPercentage;
+        if (catchRate < 0.5f)
+            return 4;
+        return new Random().Next(0, 4);
     }
 }

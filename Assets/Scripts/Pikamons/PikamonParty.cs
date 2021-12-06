@@ -29,4 +29,12 @@ public class PikamonParty : MonoBehaviour
     {
         return pikamons.Where(x => x.HP > 0).FirstOrDefault();
     }
+
+    public void AddPikamon(Pikamon newPikamon)
+    {
+        if (pikamons.Count < 6)
+        {
+            pikamons.Add(newPikamon);
+        }
+    }
 }

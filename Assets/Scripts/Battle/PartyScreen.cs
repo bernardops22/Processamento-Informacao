@@ -12,7 +12,7 @@ public class PartyScreen : MonoBehaviour
 
     public void Init()
     {
-        memberSlots = GetComponentsInChildren<PartyMemberUI>();
+        memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
     }
 
     public void SetPartyData(List<Pikamon> pikamons)
@@ -20,8 +20,11 @@ public class PartyScreen : MonoBehaviour
         this.pikamons = pikamons;
         for (int i = 0; i < memberSlots.Length; i++)
         {
-            if(i < pikamons.Count)
+            if (i < pikamons.Count)
+            {
+                memberSlots[i].gameObject.SetActive(true);
                 memberSlots[i].SetData(pikamons[i]);
+            }
             else
                 memberSlots[i].gameObject.SetActive(false);
         }

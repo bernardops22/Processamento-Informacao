@@ -8,6 +8,12 @@ public class Pikamon
 
     [SerializeField] PikamonBase _base;
 
+    public Pikamon(PikamonBase pBase)
+    {
+        _base = pBase;
+        Init();
+    }
+
     public PikamonBase Base
     {
         get
@@ -28,7 +34,6 @@ public class Pikamon
         
         //Base = pBase;
         HP = Base.MaxHp;
-        Tenacity = Base.Tenacity;
         Rarity = Base.Rarity;
         
         //Generate Moves

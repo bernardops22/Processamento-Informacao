@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PikamonBase : ScriptableObject{
@@ -10,7 +11,6 @@ public class PikamonBase : ScriptableObject{
 
 //Base Stats
     [SerializeField] int maxHp;
-    [SerializeField] double tenacity;
     [SerializeField] int rarity;
     
     [SerializeField] List<LearnableMove> learnableMoves;
@@ -29,11 +29,6 @@ public class PikamonBase : ScriptableObject{
 
     public int MaxHp{
         get{return maxHp;}
-    }
-
-    public double Tenacity
-    {
-        get { return tenacity; }
     }
 
     public int Rarity

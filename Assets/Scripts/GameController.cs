@@ -46,8 +46,10 @@ public class GameController : MonoBehaviour
 
         var playerParty = playerController.GetComponent<PikamonParty>();
         var wildPikamon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPikamon();
+
+        var wildPikamonCopy = new Pikamon(wildPikamon.Base);
         
-        battleSystem.StartBattle(playerParty, wildPikamon);
+        battleSystem.StartBattle(playerParty, wildPikamonCopy);
     }
 
     void EndBattle(bool won)
