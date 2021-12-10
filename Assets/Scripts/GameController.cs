@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState {FreeRoam, Battle, Dialog}
+public enum GameState {FreeRoam, Battle, Quiz}
 
 public class GameController : MonoBehaviour
 {
@@ -22,18 +20,18 @@ public class GameController : MonoBehaviour
            var trainer = trainerCollider.GetComponentInParent<NPCController>();
            if (trainer != null)
            {
-               StartCoroutine(trainer.TriggerExclamation(playerController));
+               StartCoroutine(trainer.TriggerExclamation());
            }
         };
 
-            DialogManager.Instance.OnShowDialog += () =>
+        QuizManager.Instance.OnShowQuiz += () =>
         {
-            state = GameState.Dialog;
+            state = GameState.Quiz;
         };
         
-        DialogManager.Instance.OnCloseDialog += () =>
+        QuizManager.Instance.OnCloseQuiz += () =>
         {
-            if(state == GameState.Dialog)
+            if (state == GameState.Quiz)
                 state = GameState.FreeRoam;
         };
     }
@@ -45,8 +43,8 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(false);
 
         var playerParty = playerController.GetComponent<PikamonParty>();
-        var wildPikamon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPikamon();
 
+        var wildPikamon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPikamon();
         var wildPikamonCopy = new Pikamon(wildPikamon.Base);
         
         battleSystem.StartBattle(playerParty, wildPikamonCopy);
@@ -68,9 +66,10 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Battle)
         {
             battleSystem.HandleUpdate();
-        }else if (state == GameState.Dialog)
+        }
+        else if (state == GameState.Quiz)
         {
-            DialogManager.Instance.HandleUpdate();
+            QuizManager.Instance.HandleUpdate();
         }
     }
 }

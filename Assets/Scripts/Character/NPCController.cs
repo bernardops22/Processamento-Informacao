@@ -1,20 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Debug = UnityEngine.Debug;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-
-    [SerializeField] private Dialog dialog;
+    [SerializeField] private List<QuestionAnswers> qnA;
     [SerializeField] private GameObject exclamation;
-    [SerializeField] PlayerController playerController;
 
-    private bool isTrue = false;
+    private bool isTrue;
     private bool isInteractable = true;
-    public IEnumerator TriggerExclamation(PlayerController player)
+    public IEnumerator TriggerExclamation()
     {
         if (!isTrue)
         {
@@ -27,8 +22,7 @@ public class NPCController : MonoBehaviour, Interactable
     {
         if (isInteractable)
         {
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
-            //dar pokemon ao jogador (fazer apos ter sistema de apanhar pokemons)
+            StartCoroutine(QuizManager.Instance.ShowQuiz(qnA));
             exclamation.SetActive(false);
             isTrue = true;
             isInteractable = false;

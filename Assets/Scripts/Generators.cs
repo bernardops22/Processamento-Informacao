@@ -49,12 +49,24 @@ public static class Generators
         return -1;
     }
 
-    public static double NewEncounter(){
+    public static int NewEncounter(){
         double U = new Random().Next(0, 2);
         if(U >= 0 && U < 0.4)
             return 0;
         if(U >= 0.4 && U <= 1)
             return 1;
+        return -1;
+    }
+
+    public static int firstPikamon(double[] vector)
+    {
+        double U = new Random().Next(0, 1);
+        if (U >= 0 && U < vector[0])
+            return 0;
+        if (U >= vector[0] && U <= vector[0] + vector[1])
+            return 1;
+        if (U >= vector[0] + vector[1] && U <= vector[0] + vector[1] + vector[2])
+            return 2;
         return -1;
     }
 }

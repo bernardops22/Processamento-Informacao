@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class MapArea : MonoBehaviour
 {
-    [FormerlySerializedAs("wildPikamons")] [SerializeField] List<Pikamon> wildPikamons;
+    [SerializeField] List<Pikamon> wildPikamons;
     
     
     //TODO Spawn based on pikamon rarity
