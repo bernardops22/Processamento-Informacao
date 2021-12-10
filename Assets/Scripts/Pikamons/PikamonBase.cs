@@ -11,8 +11,7 @@ public class PikamonBase : ScriptableObject{
 
 //Base Stats
     [SerializeField] int maxHp;
-    [SerializeField] int rarity;
-    
+
     [SerializeField] List<LearnableMove> learnableMoves;
 
     public string Name{
@@ -29,11 +28,6 @@ public class PikamonBase : ScriptableObject{
 
     public int MaxHp{
         get{return maxHp;}
-    }
-
-    public int Rarity
-    {
-        get { return rarity; }
     }
 
     public List<LearnableMove> LearnableMoves {

@@ -132,7 +132,6 @@ public class QuizManager : MonoBehaviour
             firstPikamon = pikamonList[2];
         
         firstPikamon.Init();
-        //firstPikamon = FindObjectOfType<QuizManager>().GetComponent<QuizManager>().ChooseFirstPikamon();
         pikamonParty.AddPikamon(new Pikamon(firstPikamon.Base));
     }
 }

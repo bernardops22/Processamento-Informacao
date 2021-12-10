@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d71b1f53e51edacfbb9bd614921f103a, type: 3}
-  m_Name: Rattata
+  m_Name: Mudkip
   m_EditorClassIdentifier: 
-  name: Rattata
-  frontSprite: {fileID: 21300000, guid: d22b763f918284ae9bfd275d746043f1, type: 3}
-  backSprite: {fileID: 21300000, guid: 18e5ed079592f3f70be0eda7afe86f16, type: 3}
-  maxHp: 30
+  name: Mudkip
+  frontSprite: {fileID: 21300000, guid: 1b12471ef47e1e4f288b3104f19df8f6, type: 3}
+  backSprite: {fileID: 21300000, guid: 2c68711746c9fb516bf0a89e657f7495, type: 3}
+  maxHp: 50
   rarity: 0
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: cad1af2b50e3d8cacbf4980afa4fb62d, type: 2}
-  - moveBase: {fileID: 11400000, guid: 86409a4e5b238e6bb88ce4798e5c68c4, type: 2}
+  - moveBase: {fileID: 11400000, guid: 40c837220c9dffed5906d24170fc5f3f, type: 2}

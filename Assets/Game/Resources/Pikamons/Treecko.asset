@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d71b1f53e51edacfbb9bd614921f103a, type: 3}
-  m_Name: Rattata
+  m_Name: Treecko
   m_EditorClassIdentifier: 
-  name: Rattata
-  frontSprite: {fileID: 21300000, guid: d22b763f918284ae9bfd275d746043f1, type: 3}
-  backSprite: {fileID: 21300000, guid: 18e5ed079592f3f70be0eda7afe86f16, type: 3}
-  maxHp: 30
+  name: Treecko
+  frontSprite: {fileID: 21300000, guid: eef661673ba298eb0a8016aa05b51b83, type: 3}
+  backSprite: {fileID: 21300000, guid: 5142ef7660687d33d80068ff8df8c60f, type: 3}
+  maxHp: 40
   rarity: 0
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: cad1af2b50e3d8cacbf4980afa4fb62d, type: 2}
-  - moveBase: {fileID: 11400000, guid: 86409a4e5b238e6bb88ce4798e5c68c4, type: 2}
+  - moveBase: {fileID: 11400000, guid: cfff37a71f9777191b0800570e1cc758, type: 2}
+  - moveBase: {fileID: 11400000, guid: 388e8ab0d90a479079faa784ca081ae6, type: 2}

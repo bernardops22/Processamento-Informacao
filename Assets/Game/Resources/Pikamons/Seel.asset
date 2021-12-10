@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d71b1f53e51edacfbb9bd614921f103a, type: 3}
-  m_Name: Rattata
+  m_Name: Seel
   m_EditorClassIdentifier: 
-  name: Rattata
-  frontSprite: {fileID: 21300000, guid: d22b763f918284ae9bfd275d746043f1, type: 3}
-  backSprite: {fileID: 21300000, guid: 18e5ed079592f3f70be0eda7afe86f16, type: 3}
-  maxHp: 30
-  rarity: 0
+  name: Seel
+  frontSprite: {fileID: 21300000, guid: ea76bf265ee77b6a3896737af78ecf8a, type: 3}
+  backSprite: {fileID: 21300000, guid: fbc5b26ce042bbde6bdc8b3748fd113a, type: 3}
+  maxHp: 65
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: cad1af2b50e3d8cacbf4980afa4fb62d, type: 2}
-  - moveBase: {fileID: 11400000, guid: 86409a4e5b238e6bb88ce4798e5c68c4, type: 2}
+  - moveBase: {fileID: 11400000, guid: 34bb3ec44e549dcf6af96d99ac664d38, type: 2}
+  - moveBase: {fileID: 11400000, guid: 40c837220c9dffed5906d24170fc5f3f, type: 2}

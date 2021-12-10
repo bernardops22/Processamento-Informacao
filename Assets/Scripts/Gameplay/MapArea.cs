@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MapArea : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class MapArea : MonoBehaviour
     //TODO Spawn based on pikamon rarity
     public Pikamon GetRandomWildPikamon()
     {
-        var wildPikamon = wildPikamons[Random.Range(0,wildPikamons.Count)];
+        var wildPikamon = wildPikamons[Generators.Rarity()];
         wildPikamon.Init();
         return wildPikamon;
     }

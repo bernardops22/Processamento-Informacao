@@ -100,7 +100,10 @@ public class PlayerController : MonoBehaviour{
     private void CheckForEncounters(){
         if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.GrassLayer) != null && GetComponent<PikamonParty>().GetHealthyPikamon() != null)
         {
-            if(UnityEngine.Random.Range(1,101) <= 10)
+            int probability = 25;
+            if (isSprinting) probability = 75;
+            
+            if(UnityEngine.Random.Range(1,101) <= probability)
             {
                 animator.SetBool("isMoving",false);
                 OnEncountered();

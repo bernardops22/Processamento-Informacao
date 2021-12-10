@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d71b1f53e51edacfbb9bd614921f103a, type: 3}
-  m_Name: Bulbasaur
+  m_Name: Tropius
   m_EditorClassIdentifier: 
-  name: Bulbasaur
-  frontSprite: {fileID: 21300000, guid: 28a9513cbc98ed981bdc47685cb53df9, type: 3}
-  backSprite: {fileID: 21300000, guid: d4be14036caab954aa2d9ccfbdb4b50f, type: 3}
-  maxHp: 45
-  tenacity: 0
+  name: Tropius
+  frontSprite: {fileID: 21300000, guid: af205d6c145135405b32ffeef12f2a56, type: 3}
+  backSprite: {fileID: 21300000, guid: 2d21c34418d21ac908bcf71c873047c2, type: 3}
+  maxHp: 99
   rarity: 0
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: cad1af2b50e3d8cacbf4980afa4fb62d, type: 2}
-  - moveBase: {fileID: 11400000, guid: 6dc226e197cc534c2bed0225499c7e5f, type: 2}
+  - moveBase: {fileID: 11400000, guid: 628a1ded49a5b90e98d97ddee219d54d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 31e8bf7ab67258d3bb590c00de1272cd, type: 2}

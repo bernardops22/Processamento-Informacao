@@ -4,10 +4,9 @@ using Random = System.Random;
 
 public static class Generators
 {
-    
     public static double DamageFromAttacks()
     {
-        double U = new Random().Next(0, 2);
+        double U = new Random().NextDouble();
         if(U >= 0 && U < 1/6D)
             return (-2/15D + Math.Sqrt(4/225D - 2/75D * (2/3D - U))) * 75;
         if(U >= 1/6D && U <= 5/6D)
@@ -18,14 +17,14 @@ public static class Generators
     }
 
     public static double CatchRate(){
-        double U = new Random().Next(0, 2);
+        double U = new Random().NextDouble();
         return - Math.Log(1 - U);
     }
 
-    public static double Rarity(){
-        double U = new Random().Next(0, 2);
-        if(U == 0)
-            return 0;
+    public static int Rarity()
+    {
+        double U = new Random().NextDouble();
+        //Debug.Log(U);
         if(U > 0 && U < 11/1024D)
             return 1;
         if(U >= 11/1024D && U < 7/128D)
@@ -44,23 +43,23 @@ public static class Generators
             return 8;
         if(U >= 1013/1024D && U < 1023/1024D)
             return 9;
-        if(U >= 1023/1024D && U < 1)
+        if(U >= 1023/1024D && U <= 1)
             return 10;
-        return -1;
+        return 0;
     }
 
-    public static int NewEncounter(){
+    /*public static int NewEncounter(){
         double U = new Random().Next(0, 2);
         if(U >= 0 && U < 0.4)
             return 0;
         if(U >= 0.4 && U <= 1)
             return 1;
         return -1;
-    }
+    }*/
 
     public static int firstPikamon(double[] vector)
     {
-        double U = new Random().Next(0, 1);
+        double U = new Random().NextDouble();
         if (U >= 0 && U < vector[0])
             return 0;
         if (U >= vector[0] && U <= vector[0] + vector[1])

@@ -34,8 +34,7 @@ public class Pikamon
         
         //Base = pBase;
         HP = Base.MaxHp;
-        Rarity = Base.Rarity;
-        
+
         //Generate Moves
         Moves = new List<Move>();
         foreach (var move in Base.LearnableMoves)

@@ -678,8 +678,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28a9513cbc98ed981bdc47685cb53df9, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 2ddaa2f6f741651c3bf14b12d2dd585a, type: 3}
+  m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
@@ -5970,11 +5970,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPikamons:
-  - _base: {fileID: 11400000, guid: b8cd3453006748f758c200c76a9abf17, type: 2}
+  - _base: {fileID: 11400000, guid: 265152a9b0338208fa99215af7123cef, type: 2}
+  - _base: {fileID: 11400000, guid: 4c29cbe6a350662e1bb84d2b0188ac6f, type: 2}
+  - _base: {fileID: 11400000, guid: 2262a85fa3b4b6626b24b2784a45feb3, type: 2}
   - _base: {fileID: 11400000, guid: a1021e3f52c26e9f0bae269cbabc0f4c, type: 2}
+  - _base: {fileID: 11400000, guid: 65943cf6ceb091b79875eec49300a645, type: 2}
   - _base: {fileID: 11400000, guid: 62e81c8eff040e0ac904c75a43a3eced, type: 2}
   - _base: {fileID: 11400000, guid: 477a801a2230a50a0930d2a182f4a4d1, type: 2}
   - _base: {fileID: 11400000, guid: eb67db0fce90f3f58adce7fba1d53f71, type: 2}
+  - _base: {fileID: 11400000, guid: 929ab1a04a0e8a1bbb6b7fdb818ec992, type: 2}
+  - _base: {fileID: 11400000, guid: 3c102012f8e7469e48b8df40a2c2e7c6, type: 2}
+  - _base: {fileID: 11400000, guid: 39cddabda5d4c2ffe8aaa7ff553066a6, type: 2}
 --- !u!1 &1131698596
 GameObject:
   m_ObjectHideFlags: 0
@@ -9200,9 +9206,9 @@ MonoBehaviour:
   lettersPerSecond: 45
   answerPanel: {fileID: 639544172}
   pikamonList:
-  - _base: {fileID: 11400000, guid: eb67db0fce90f3f58adce7fba1d53f71, type: 2}
-  - _base: {fileID: 11400000, guid: b8cd3453006748f758c200c76a9abf17, type: 2}
-  - _base: {fileID: 11400000, guid: 477a801a2230a50a0930d2a182f4a4d1, type: 2}
+  - _base: {fileID: 11400000, guid: 265152a9b0338208fa99215af7123cef, type: 2}
+  - _base: {fileID: 11400000, guid: 4c29cbe6a350662e1bb84d2b0188ac6f, type: 2}
+  - _base: {fileID: 11400000, guid: 2262a85fa3b4b6626b24b2784a45feb3, type: 2}
   pikamonParty: {fileID: 1578317458}
 --- !u!1 &1790229391
 GameObject:

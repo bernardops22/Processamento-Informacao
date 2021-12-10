@@ -16,7 +16,7 @@ MonoBehaviour:
   frontSprite: {fileID: 21300000, guid: 8465d1cd780fc42b69f599e2350e54d4, type: 3}
   backSprite: {fileID: 21300000, guid: 95550bb91614637d4beda999e6b0a2ba, type: 3}
   maxHp: 25
-  tenacity: 0
   rarity: 0
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: cad1af2b50e3d8cacbf4980afa4fb62d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 0e84b0e798054d3288b72757470f514c, type: 2}
+  - moveBase: {fileID: 11400000, guid: 57d523cd1781237d4aa754474195ffcf, type: 2}
