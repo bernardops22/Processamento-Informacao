@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Nuzzle
   m_EditorClassIdentifier: 
   name: Nuzzle
-  power: 20
+  power: 10
   pp: 20

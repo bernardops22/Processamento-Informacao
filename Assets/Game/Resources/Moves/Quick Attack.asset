@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Quick Attack
   m_EditorClassIdentifier: 
   name: Quick Attack
-  power: 40
+  power: 20
   pp: 30

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pound
   m_EditorClassIdentifier: 
   name: Pound
-  power: 40
+  power: 20
   pp: 35

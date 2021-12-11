@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Scratch
   m_EditorClassIdentifier: 
   name: Scratch
-  power: 40
+  power: 20
   pp: 35

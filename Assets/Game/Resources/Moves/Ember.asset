@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Ember
   m_EditorClassIdentifier: 
   name: Ember
-  power: 40
+  power: 20
   pp: 25

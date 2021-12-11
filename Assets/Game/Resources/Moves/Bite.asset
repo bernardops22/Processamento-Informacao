@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Bite
   m_EditorClassIdentifier: 
   name: Bite
-  power: 60
+  power: 30
   pp: 25

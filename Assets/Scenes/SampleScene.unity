@@ -156,6 +156,7 @@ MonoBehaviour:
   playerController: {fileID: 1578317454}
   battleSystem: {fileID: 1797312083}
   worldCamera: {fileID: 519420031}
+  quizManager: {fileID: 1761099094}
 --- !u!4 &11797944
 Transform:
   m_ObjectHideFlags: 0
@@ -1726,7 +1727,11 @@ MonoBehaviour:
   - {fileID: 1546536888}
   - {fileID: 1070830233}
   - {fileID: 1474374204}
-  highlightedColor: {r: 0.13841605, g: 0.066082224, b: 0.9339623, a: 1}
+  highlightedColor:
+    r: 0.13841605
+    g: 0.066082224
+    b: 0.9339623
+    a: 1
 --- !u!1 &659663404
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,15 +5975,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPikamons:
-  - _base: {fileID: 11400000, guid: 265152a9b0338208fa99215af7123cef, type: 2}
-  - _base: {fileID: 11400000, guid: 4c29cbe6a350662e1bb84d2b0188ac6f, type: 2}
-  - _base: {fileID: 11400000, guid: 2262a85fa3b4b6626b24b2784a45feb3, type: 2}
   - _base: {fileID: 11400000, guid: a1021e3f52c26e9f0bae269cbabc0f4c, type: 2}
   - _base: {fileID: 11400000, guid: 65943cf6ceb091b79875eec49300a645, type: 2}
   - _base: {fileID: 11400000, guid: 62e81c8eff040e0ac904c75a43a3eced, type: 2}
+  - _base: {fileID: 11400000, guid: 2262a85fa3b4b6626b24b2784a45feb3, type: 2}
   - _base: {fileID: 11400000, guid: 477a801a2230a50a0930d2a182f4a4d1, type: 2}
   - _base: {fileID: 11400000, guid: eb67db0fce90f3f58adce7fba1d53f71, type: 2}
   - _base: {fileID: 11400000, guid: 929ab1a04a0e8a1bbb6b7fdb818ec992, type: 2}
+  - _base: {fileID: 11400000, guid: 4c29cbe6a350662e1bb84d2b0188ac6f, type: 2}
+  - _base: {fileID: 11400000, guid: 265152a9b0338208fa99215af7123cef, type: 2}
   - _base: {fileID: 11400000, guid: 3c102012f8e7469e48b8df40a2c2e7c6, type: 2}
   - _base: {fileID: 11400000, guid: 39cddabda5d4c2ffe8aaa7ff553066a6, type: 2}
 --- !u!1 &1131698596
@@ -9203,13 +9208,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quizBox: {fileID: 561357798}
   questionText: {fileID: 817248235}
-  lettersPerSecond: 45
-  answerPanel: {fileID: 639544172}
   pikamonList:
   - _base: {fileID: 11400000, guid: 265152a9b0338208fa99215af7123cef, type: 2}
   - _base: {fileID: 11400000, guid: 4c29cbe6a350662e1bb84d2b0188ac6f, type: 2}
   - _base: {fileID: 11400000, guid: 2262a85fa3b4b6626b24b2784a45feb3, type: 2}
   pikamonParty: {fileID: 1578317458}
+  options:
+  - {fileID: 1546536888}
+  - {fileID: 1070830233}
+  - {fileID: 1474374204}
+  highlightedColor: {r: 0.0047169924, g: 0.17247196, b: 1, a: 1}
 --- !u!1 &1790229391
 GameObject:
   m_ObjectHideFlags: 0

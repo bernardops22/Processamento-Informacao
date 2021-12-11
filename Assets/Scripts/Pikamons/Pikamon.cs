@@ -49,17 +49,7 @@ public class Pikamon
     //COLOCAR AQUI O GERADOR DO ATAQUE
     public bool TakeDamage(Move move, Pikamon attacker)
     {
-        //Se nao conseguirmos fazer todas as nossas propostas podemos fazer um gerador para o critical
-        //O critical pode ser removido caso nao queiramos usar como variavel aleatória
-
-        /*float critical = 1f;
-        if (Random.value * 100f <= 6.25f)
-            critical = 2f;*/
-
-        float modifiers = Random.Range(0.85f, 1f); // * critical;
-        float a = 10 / 50f;
-        float d = a * move.Base.Power;
-        int damage = Mathf.FloorToInt(d * modifiers);
+        int damage = Mathf.FloorToInt(move.Base.Power + (float) Generators.DamageFromAttacks());
 
         HP -= damage;
         if (HP <= 0)
@@ -71,7 +61,6 @@ public class Pikamon
         return false;
     }
     
-    //Podemos fazer aqui mais uma porque é necessário um random para escolher o move do enemy pokemon
     public Move GetRandomMove()
     {
         int r = Random.Range(0, Moves.Count);

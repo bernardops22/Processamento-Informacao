@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mega Punch
   m_EditorClassIdentifier: 
   name: Mega Punch
-  power: 80
+  power: 40
   pp: 20

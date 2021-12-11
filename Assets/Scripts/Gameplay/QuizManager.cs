@@ -12,11 +12,11 @@ public class QuizManager : MonoBehaviour
     private List<QuestionAnswers> qnA;
     [SerializeField] private GameObject quizBox;
     [SerializeField] private Text questionText;
-    [SerializeField] private int lettersPerSecond;
-    [SerializeField] private AnswerPanel answerPanel;
     [SerializeField] List<Pikamon> pikamonList;
     [SerializeField] private PikamonParty pikamonParty;
     private double[] vector = new double[3];
+    [SerializeField] public List<Text> options;
+    [SerializeField] private Color highlightedColor;
 
     public event Action OnShowQuiz;
     public event Action OnCloseQuiz;
@@ -31,20 +31,20 @@ public class QuizManager : MonoBehaviour
     
     private bool isTyping;
     private int currentQuestion = 0;
+    private int currentOption = 0;
 
     public IEnumerator ShowQuiz(List<QuestionAnswers> qnAnswersList)
     {
         yield return new WaitForEndOfFrame();
-        
+
         OnShowQuiz?.Invoke();
         
         state = QuizState.Busy;
+        Update();
         
         qnA = qnAnswersList;
         quizBox.SetActive(true);
-        StartCoroutine(TypeQuestion(qnA[currentQuestion].question));
-        Update();
-        currentQuestion++;
+        TypeQuestion(qnA[currentQuestion].question);
     }
 
     private void Update()
@@ -56,13 +56,13 @@ public class QuizManager : MonoBehaviour
     public void HandleUpdate()
     {
         state = QuizState.Busy;
-        if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
+            currentQuestion++;
+            Update();
             if (currentQuestion < qnA.Count)
             {
-                StartCoroutine(TypeQuestion(qnA[currentQuestion].question));
-                Update();
-                currentQuestion++;
+                TypeQuestion(qnA[currentQuestion].question);
             }
             else
             {
@@ -70,53 +70,67 @@ public class QuizManager : MonoBehaviour
                 quizBox.SetActive(false);
                 OnCloseQuiz?.Invoke();
             }
+            state = QuizState.Free;
         }
     }
     
-    private IEnumerator TypeQuestion(string question)
+    private void TypeQuestion(string question)
     {
         isTyping = true;
         questionText.text = "";
         
         for (int i = 0; i < qnA[currentQuestion].answers.Length; i++)
-            answerPanel.options[i].text = qnA[currentQuestion].answers[i];
-
-        foreach (var letter in question.ToCharArray()){
-            questionText.text += letter;
-            yield return new WaitForSeconds(1f/lettersPerSecond);
-        }
+            options[i].text = qnA[currentQuestion].answers[i];
+        
+        questionText.text = qnA[currentQuestion].question;
 
         isTyping = false;
     }
 
-    private int currentOption;
-    
     void HandleOptionSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++currentOption;
+            currentOption++;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --currentOption;
+            currentOption--;
 
         currentOption = Mathf.Clamp(currentOption, 0, 2);
 
-        answerPanel.UpdateOptionSelection(currentOption);
-
+        UpdateOptionSelection(currentOption);
+        
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (currentOption == 0)
+            VectorOperation();
+        }
+    }
+
+    private void VectorOperation()
+    {
+        if (currentOption == 0)
+        {
+            vector[0] += 0.2;
+        }
+        else if (currentOption == 1)
+        {
+            vector[1] += 0.2;
+        }
+        else if (currentOption == 2)
+        {
+            vector[2] += 0.2;
+        }
+        state = QuizState.Free;
+    }
+    
+    private void UpdateOptionSelection(int selectedOption)
+    {
+        for (int i = 0; i < options.Count; i++)
+        {
+            if (i == selectedOption)
+                options[i].color = highlightedColor;
+            else
             {
-                vector[0] += 0.2;
+                options[i].color = Color.black;
             }
-            else if (currentOption == 1)
-            {
-                vector[1] += 0.2;
-            }
-            else if (currentOption == 2)
-            {
-                vector[2] += 0.2;
-            }
-            state = QuizState.Free;
         }
     }
 
@@ -125,7 +139,7 @@ public class QuizManager : MonoBehaviour
         var firstPikamon = pikamonList[0];
         
         int pikamon = Generators.firstPikamon(vector);
-        
+
         if (pikamon == 1)
             firstPikamon = pikamonList[1];
         else if (pikamon == 2)

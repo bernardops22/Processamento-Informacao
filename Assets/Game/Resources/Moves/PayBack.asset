@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PayBack
   m_EditorClassIdentifier: 
   name: PayBack
-  power: 50
+  power: 25
   pp: 10

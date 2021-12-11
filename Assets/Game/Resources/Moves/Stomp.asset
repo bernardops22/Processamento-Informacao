@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stomp
   m_EditorClassIdentifier: 
   name: Stomp
-  power: 65
+  power: 32
   pp: 20

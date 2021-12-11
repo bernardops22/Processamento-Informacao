@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerController playerController;
     [SerializeField] BattleSystem battleSystem;
     [SerializeField] Camera worldCamera;
+    [SerializeField] private QuizManager quizManager;
 
     GameState state;
 
@@ -69,7 +70,7 @@ public class GameController : MonoBehaviour
         }
         else if (state == GameState.Quiz)
         {
-            QuizManager.Instance.HandleUpdate();
+            quizManager.HandleUpdate();
         }
     }
 }

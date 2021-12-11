@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Lick
   m_EditorClassIdentifier: 
   name: Lick
-  power: 30
+  power: 15
   pp: 30

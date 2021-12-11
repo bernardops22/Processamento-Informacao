@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Leaf Storm
   m_EditorClassIdentifier: 
   name: Leaf Storm
-  power: 130
+  power: 65
   pp: 10

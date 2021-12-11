@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Headbutt
   m_EditorClassIdentifier: 
   name: Headbutt
-  power: 70
+  power: 35
   pp: 15

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Charge Beam
   m_EditorClassIdentifier: 
   name: Charge Beam
-  power: 50
+  power: 25
   pp: 10

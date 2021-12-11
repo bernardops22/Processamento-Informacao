@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Leafage
   m_EditorClassIdentifier: 
   name: Leafage
-  power: 40
+  power: 20
   pp: 40

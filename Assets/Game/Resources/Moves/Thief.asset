@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Thief
   m_EditorClassIdentifier: 
   name: Thief
-  power: 60
+  power: 30
   pp: 25

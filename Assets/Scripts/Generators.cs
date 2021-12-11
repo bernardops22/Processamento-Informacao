@@ -60,11 +60,13 @@ public static class Generators
     public static int firstPikamon(double[] vector)
     {
         double U = new Random().NextDouble();
-        if (U >= 0 && U < vector[0])
+        Debug.Log(vector[0]+" "+vector[1]+" "+vector[2]);
+        Debug.Log(U);
+        if (U >= 0 && U <= vector[0])
             return 0;
-        if (U >= vector[0] && U <= vector[0] + vector[1])
+        if (U > vector[0] && U <= vector[0] + vector[1])
             return 1;
-        if (U >= vector[0] + vector[1] && U <= vector[0] + vector[1] + vector[2])
+        if (U > vector[0] + vector[1] && U <= vector[0] + vector[1] + vector[2])
             return 2;
         return -1;
     }
