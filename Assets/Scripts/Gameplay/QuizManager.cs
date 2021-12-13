@@ -82,7 +82,7 @@ public class QuizManager : MonoBehaviour
         for (int i = 0; i < qnA[currentQuestion].answers.Length; i++)
             options[i].text = qnA[currentQuestion].answers[i];
         
-        questionText.text = qnA[currentQuestion].question;
+        questionText.text = question;
 
         isTyping = false;
     }
@@ -98,7 +98,7 @@ public class QuizManager : MonoBehaviour
 
         UpdateOptionSelection(currentOption);
         
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) && currentQuestion < 6)
         {
             VectorOperation();
         }

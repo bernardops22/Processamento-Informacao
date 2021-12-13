@@ -13,7 +13,7 @@ public static class Generators
             return (U - 0.5) * 15;
         if(U > 5/6D && U <=1)
             return (2/15D - Math.Sqrt(4/225D + 2/75D * (1/3D - U))) * 75;
-        return -1500;
+        return 0;
     }
 
     public static double CatchRate(){
@@ -47,15 +47,6 @@ public static class Generators
             return 10;
         return 0;
     }
-
-    /*public static int NewEncounter(){
-        double U = new Random().Next(0, 2);
-        if(U >= 0 && U < 0.4)
-            return 0;
-        if(U >= 0.4 && U <= 1)
-            return 1;
-        return -1;
-    }*/
 
     public static int firstPikamon(double[] vector)
     {
