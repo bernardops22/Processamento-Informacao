@@ -340,7 +340,7 @@ public class BattleSystem : MonoBehaviour
     {
         double curHpPercentage = (double) pikamon.HP / pikamon.Base.MaxHp;
         double catchRate = Generators.CatchRate() * curHpPercentage;
-        if (catchRate < 0.5f)
+        if (catchRate < 0.45f)
             return 4;
         return new Random().Next(0, 4);
     }
