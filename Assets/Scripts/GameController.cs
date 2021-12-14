@@ -18,12 +18,12 @@ public class GameController : MonoBehaviour
         battleSystem.OnBattleOver += EndBattle;
         healingTable.onHealingStart += Healing;
 
-        playerController.OnEnterTrainersView += (Collider2D trainerCollider) =>
+        playerController.OnEnterNPCView += (Collider2D npcCollider) =>
         {
-           var trainer = trainerCollider.GetComponentInParent<NPCController>();
-           if (trainer != null)
+           var npc = npcCollider.GetComponentInParent<NPCController>();
+           if (npc != null)
            {
-               StartCoroutine(trainer.TriggerExclamation());
+               StartCoroutine(npc.TriggerExclamation());
            }
         };
 

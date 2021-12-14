@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour{
 
     private bool isSprinting;
     [SerializeField] float sprintingSpeedMultiplier;
+    [SerializeField] private Camera playerCamera;
+    private AudioSource audioSource;
     public event Action OnEncountered;
-    public event Action<Collider2D> OnEnterTrainersView;
+    public event Action<Collider2D> OnEnterNPCView;
 
     private bool isMoving;
     private Vector2 input;
@@ -18,10 +20,13 @@ public class PlayerController : MonoBehaviour{
 
     private void Awake(){
         animator = GetComponent<Animator>();
+        audioSource = playerCamera.GetComponent<AudioSource>();
     }
 
    public void HandleUpdate(){
         if(!isMoving){
+            audioSource.pitch = 1f;
+            
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
@@ -35,7 +40,11 @@ public class PlayerController : MonoBehaviour{
                 targetPos.x += input.x;
                 targetPos.y += input.y;
                 if (Input.GetKey(KeyCode.LeftShift))
+                {
                     isSprinting = true;
+                    audioSource.pitch = 2.5f;
+                }
+
                 if(IsWalkable(targetPos))
                     StartCoroutine(Move(targetPos));
             }
@@ -90,7 +99,7 @@ public class PlayerController : MonoBehaviour{
     private void OnMoveOver()
     {
         CheckForEncounters();
-        CheckIfInTrainersView();
+        CheckIfInNPCView();
     }
     
     //Probabilidade de aparecer um pikamon (difere se estiver a correr ou a andar)
@@ -108,12 +117,12 @@ public class PlayerController : MonoBehaviour{
         }
     }
 
-    private void CheckIfInTrainersView()
+    private void CheckIfInNPCView()
     {
         var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.i.FovLayer);
         if (collider != null)
         {
-            OnEnterTrainersView?.Invoke(collider);
+            OnEnterNPCView?.Invoke(collider);
         }
     }
 }
