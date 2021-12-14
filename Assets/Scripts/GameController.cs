@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public enum GameState {FreeRoam, Battle, Quiz}
+public enum GameState {FreeRoam, Battle, Quiz, Healing}
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] BattleSystem battleSystem;
+    [SerializeField] private HealingTable healingTable;
     [SerializeField] Camera worldCamera;
     [SerializeField] private QuizManager quizManager;
 
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour
     {
         playerController.OnEncountered += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
+        healingTable.onHealingStart += Healing;
 
         playerController.OnEnterTrainersView += (Collider2D trainerCollider) =>
         {
@@ -73,4 +75,12 @@ public class GameController : MonoBehaviour
             quizManager.HandleUpdate();
         }
     }
+    void Healing()
+    {
+        if (state == GameState.Healing)
+            state = GameState.FreeRoam;
+        else
+            state = GameState.Healing;
+    }
+    
 }

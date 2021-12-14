@@ -355,22 +355,22 @@ TextureImporter:
     second: objects_116
   - first:
       213: 2346192434483656938
-    second: objects_117
+    second: h1
   - first:
       213: -595281427602211305
-    second: objects_118
+    second: h2
   - first:
       213: 538826285080647454
-    second: objects_119
+    second: h3
   - first:
       213: 228074669703589773
-    second: objects_120
+    second: h4
   - first:
       213: 8626818278983215672
-    second: objects_121
+    second: h5
   - first:
       213: -1760756981417539202
-    second: objects_122
+    second: h6
   - first:
       213: -3855957774892257989
     second: objects_123
@@ -2968,7 +2968,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_117
+      name: h1
       rect:
         serializedVersion: 2
         x: 65
@@ -2989,7 +2989,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_118
+      name: h2
       rect:
         serializedVersion: 2
         x: 97
@@ -3010,7 +3010,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_119
+      name: h3
       rect:
         serializedVersion: 2
         x: 129
@@ -3031,7 +3031,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_120
+      name: h4
       rect:
         serializedVersion: 2
         x: 160
@@ -3052,7 +3052,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_121
+      name: h5
       rect:
         serializedVersion: 2
         x: 193
@@ -3073,7 +3073,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_122
+      name: h6
       rect:
         serializedVersion: 2
         x: 224
@@ -3082,7 +3082,7 @@ TextureImporter:
         height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 32, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

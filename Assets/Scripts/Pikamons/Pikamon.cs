@@ -66,5 +66,10 @@ public class Pikamon
         int r = Random.Range(0, Moves.Count);
         return Moves[r]; 
     }
+
+    public void RestoreHP()
+    {
+        HP = Base.MaxHp;
+    }
     
 }
