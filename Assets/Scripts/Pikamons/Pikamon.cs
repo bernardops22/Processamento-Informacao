@@ -22,12 +22,8 @@ public class Pikamon
         }
     }
     
-    public int HP {set; get;}
-    
-    public double Tenacity { set; get; }
-    
-    public double Rarity { set; get; }
-    
+    public double HP {set; get;}
+
     public List<Move> Moves { get; set; }
 
     public void Init(){
@@ -49,7 +45,7 @@ public class Pikamon
     //COLOCAR AQUI O GERADOR DO ATAQUE
     public bool TakeDamage(Move move, Pikamon attacker)
     {
-        int damage = Mathf.FloorToInt(move.Base.Power + (float) Generators.DamageFromAttacks());
+        double damage = move.Base.Power + (float) Generators.DamageFromAttacks();
 
         HP -= damage;
         if (HP <= 0)

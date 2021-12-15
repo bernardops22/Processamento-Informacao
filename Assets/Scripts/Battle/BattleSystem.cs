@@ -338,7 +338,7 @@ public class BattleSystem : MonoBehaviour
     //Probabilidade de apanhar um pikamon
     int TryToCatchPikamon(Pikamon pikamon)
     {
-        double curHpPercentage = (double) pikamon.HP / pikamon.Base.MaxHp;
+        double curHpPercentage = pikamon.HP / pikamon.Base.MaxHp;
         double catchRate = Generators.CatchRate() * curHpPercentage;
         if (catchRate < 0.45f)
             return 4;
